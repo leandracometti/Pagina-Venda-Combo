@@ -1,0 +1,307 @@
+/*RESET*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0 auto;
+}
+ul{list-style: none;}
+body{background-color: #e7e7e7;}
+
+$cor-escura: #0c1014;
+$cor-clara: #e7e7e7;
+$fonte:'Bebas Neue', sans-serif;
+
+@mixin nav-active{
+    pointer-events: none;
+    background-color: $cor-escura;
+    color: #fff;
+    padding: 8%;
+    border-radius: 5px;
+}
+@mixin dec-fonte{
+    letter-spacing: .3rem;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/*CABEÇALHO*/
+.header{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #e7e7e7f3;
+    
+    .header-inicial{
+        margin-bottom: .8rem;
+    }
+
+    .header-logo{
+        display: inline-block;
+        font-size: 1.5rem;
+        @include dec-fonte;
+        margin-left: 1rem;
+    }
+
+    /*MENU*/
+    ul{
+        display: flex;
+        gap: 1.5rem;
+    }
+        li{
+            text-transform: uppercase;
+            font-size: .8rem;
+        }
+            a{
+                color: #000;
+                text-decoration: none;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            i{
+                font-size: 1.1rem;
+                cursor: pointer;}
+
+            .header-nav__active{
+                @include nav-active;
+            }         
+}
+
+/*FRASE*/
+.title{
+    display: block;
+    width: 70%;
+    margin: 3% auto;
+    text-align: center;
+    font-family: $fonte;
+    font-size: 1.3rem;
+    letter-spacing: .1rem;
+}
+
+/*CARDS*/
+.main-cards{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem 0;
+    width: 60%;
+
+    .main-cards__card{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 300px;
+        height: 400px;
+        padding: 2rem;
+        margin: 1rem auto;
+        background-color: #fff;
+        box-shadow: 0 5px 12px -2px #000;
+        transition: .3s;
+
+            &:hover{
+                background-color: $cor-escura;
+                color: #fff;
+                transform: scale(1.1);
+                transition: .5s ease-in-out;
+                
+            h3{
+                border-bottom: 2px solid $cor-clara;
+            }
+            button{
+                outline: 2px solid $cor-clara;
+            }
+            }
+    }
+        
+        .main-cards__title{
+            width: 100%;
+        }
+
+        .main-cards__list_div{
+            width: 100%;
+            height: 100%;
+        
+            .main-cards__list{
+                width: 100%;
+                height: 80%;
+            }
+        }   
+
+        h3{
+            width: 100%;
+            font-family: $fonte;
+            font-size: 1.5rem;
+            border-bottom: 2px solid $cor-escura;
+            @include dec-fonte;
+            padding: 2% 0;
+            margin-bottom: 1rem;
+        }
+        p{ margin: 0;}
+        span{font-size: 1.5rem;}
+        ul{
+            flex-grow: 1;
+            margin: 1rem 0 0 0;
+        }
+        li{
+            margin: 0 1rem;
+
+            i{
+                font-size: .8rem;
+            }
+        }
+
+        .btn{
+            text-align: center;
+            width: 100%;
+        }
+            button{
+                width: 80%;
+                padding: .5rem;
+                text-transform: uppercase;
+                border-radius: 5px;
+                border: none;
+                background-color: $cor-escura;
+                color: #fff;
+                margin-top: 1px;
+
+                &:hover{
+                    transform: scale(1.05);
+                    transition: .3s ease-in;
+                    background-color: $cor-clara;
+                    color: $cor-escura;
+                    cursor: pointer;
+                }
+                &:active{
+                    background-color: #c4bfbf;
+                }
+        }
+}
+
+@media (min-width: 450px){
+    /*CABEÇALHO*/
+    .header{
+        width: 90%;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .header-inicial{
+           margin-bottom: 0;
+        }
+
+    }
+}
+/*TABLETS*/
+@media (min-width:750px) and (max-width: 990px){
+    /*CABEÇALHO*/
+    .header{
+        .header-logo{
+            font-size: 2rem;
+        }
+        ul{gap: 1.3rem;}
+        li{font-size: 1.2rem;}
+        i{font-size: 1.4rem;}
+    }
+
+    .title{ font-size: 1.6rem;}
+
+    /*CARDS*/
+    .main-cards{
+        width: 80%;
+
+        .main-cards__card{
+            width: 80%;
+            height: 250px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3%;
+            font-size: 1.2rem;
+
+            &:hover{
+                h3{border: none;}
+                .main-cards__title{border-right: 2px solid $cor-clara;}
+            }
+        }
+
+        .main-cards__title{
+            width: 35%;
+            height: 100%;
+            border-right: 2px solid $cor-escura;
+            
+            h3{
+            border-bottom: none;
+            font-size: 2rem;
+            }
+
+            span{font-size: 1.8rem;}
+         
+        }
+
+        .main-cards__list_div{
+            width: 50%;
+            height: 80%;
+            margin: 0;
+
+            ul{margin-top: 0;}
+
+            .main-cards__list{margin-right: -1.7rem;}
+        }
+    }
+}
+
+/*DESKTOPS*/
+@media (min-width: 990px){
+
+    /*CABEÇALHO*/
+    .header{
+        padding: 2% 0;
+
+        i{
+            font-size: 2rem;
+        }
+        .header-logo{
+            font-size: 3rem;
+        }
+        ul{gap: 2rem;}
+
+        li{font-size: 1.3rem;}
+    }
+
+    /*FRASE*/
+    .title{
+        margin-top: 3%;
+        font-size: 1.8rem;
+    }
+
+    .main-cards{
+        width: 90%;
+    }
+}
+
+/*LARGE*/
+@media (min-width: 1200px){
+
+    /*MENU*/
+    .header{
+        i{font-size: 1.6rem;}
+    }
+    /*CARDS*/
+    .main-cards{
+        width: 80%;
+
+        .main-cards__card{
+            padding: 2% 5%;
+
+            .main-cards__list{margin-top: 1rem; }
+        }
+    }
+}
+
